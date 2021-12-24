@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "AdminIndex";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-5">
+        <h2> YÖNETİCİ PANELİ</h2>
+    </div>
+    <div class="container-fluid bg-3 text-center">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class=" card card-stats">
+                    <div class="card-header card-header-danger card-header-icon text-center">
+                        <div class="card-icon">
+                            <i class="tim-icons icon-paper"></i>
+                        </div>
+                        <p class="card-category">MAKALELER </br> Sayısı:</p>
+                        <h3 class="card-title">@ViewBag.makaleSay</h3>
+                    </div>
+                    <div class="card-footer">
+
+                        <i class="material-icons text-danger">warning</i>
+                        <a href="~/Admin/Makaleler">Listele...</a>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-sm-3">
+                <div class="card card-stats">
+                    <div class="card-header card-header-danger card-header-icon text-center">
+                        <div class="card-icon">
+                            <i class="tim-icons icon-bullet-list-67"></i>
+                        </div>
+                        <p class="card-category">KATEGORİLER </br> Sayısı:</p>
+                        <h3 class="card-title">@ViewBag.katSay</h3>
+                    </div>
+                    <div class="card-footer">
+
+                        <i class="material-icons text-danger">warning</i>
+                        <a href="~/Admin/Kategoriler">Listele...</a>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-3">
+                <div class="card card-stats">
+                    <div class="card-header card-header-warning card-header-icon text-center">
+                        <div class="card-icon">
+                            <i class="tim-icons icon-single-02"></i>
+                        </div>
+                        <p class="card-category">ÜYELER </br> Sayısı:</p>
+                        <h3 class="card-title">@ViewBag.uyeSay</h3>
+                    </div>
+                    <div class="card-footer">
+
+                        <i class="material-icons text-danger">warning</i>
+                        <a href="~/Admin/Uyeler">Listele...</a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class=" card card-stats">
+                    <div class="card-header card-header-danger card-header-icon text-center">
+                        <div class="card-icon">
+                            <i class="tim-icons icon-alert-circle-exc"></i>
+                        </div>
+                        <p class="card-category">DUYRULAR </br> Sayısı:</p>
+                        <h3 class="card-title">@ViewBag.duyuruSay</h3>
+                    </div>
+                    <div class="card-footer">
+
+                        <i class="material-icons text-danger">warning</i>
+                        <a href="~/Admin/Duyurular">Listele...</a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class=" card card-stats">
+                    <div class="card-header card-header-danger card-header-icon text-center">
+                        <div class="card-icon">
+                            <i class="tim-icons icon-email-85"></i>
+                        </div>
+                        <p class="card-category">MESAJLAR </br> Sayısı:</p>
+                        <h3 class="card-title">@ViewBag.mesajSay</h3>
+                    </div>
+                    <div class="card-footer">
+                        <i class="material-icons text-danger">warning</i>
+                        <a href="~/Admin/Mesajlar">Listele...</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card card-stats">
+                    <div class="card-icon ">
+                        <i class="tim-icons icon-chat-33"></i>
+                    </div>
+                    <p class="card-category">YORUMLAR </br> Sayısı:</p>
+                    <h3 class="card-title">@ViewBag.yorumSay</h3>
+
+                </div>
+            </div>
+        </div>
+    </div><br>
+    </div>

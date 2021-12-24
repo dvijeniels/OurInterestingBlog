@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Adilet.Models.Uye>
+@{
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2>Üyler</h2><hr />
+        @if (ViewBag.hata != null)
+        {
+            <div class="alert alert-danger">@ViewBag.hata</div>
+        }
+        @if (ViewBag.sonuc != null)
+        {
+            <div class="alert alert-success">@ViewBag.sonuc</div>
+        }
+        <br />
+        @Html.ActionLink("Üye Ekle", "UyeEkle", null, new { @class = "btn btn-info" })
+        <br /><br />
+        <table class="table">
+            <tr>
+                <td><b>ID</b></td>
+                <td><b>KULLANICI ADI</b></td>
+                <td><b>FOTOĞRAF</b></td>
+                <td><b>ADI VE SOYADI</b></td>
+                <td><b>E-MAİL</b></td>
+                <td><b>DÜZENLE</b></td>
+                <td><b>SİL</b></td>
+            </tr>
+            @foreach (var uye in Model)
+            {
+                <tr>
+                    <td>@uye.UyeId</td>
+                    <td>@uye.KullaniciAdi</td>
+                    <td><img src="~/Content/UyeFoto/@uye.Foto" class="img-thumbnail" style="width:50px" /></td>
+                    <td>@uye.AdSoyad</td>
+                    <td>@uye.Email</td>
+                    <td><a href="~/Admin/UyeDuzenle/@uye.UyeId" class="btn btn-warning">Düzenle</a></td>
+                    <td><a href="~/Admin/UyeSil/@uye.UyeId" class="btn btn-warning" onclick="return confirm('Silmek istediğinize emin misiniz?')">Sil</a></td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

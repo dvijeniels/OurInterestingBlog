@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Adilet.Models.Duyrular>
+
+<h5 class="card-header">Duyrular</h5>
+<div class="card-body">
+    <div class="row">
+        <div class="col-lg-4">
+            <ul class="list-unstyled mb-0">
+                <marquee direction=up width=250 height=185>
+                    <center>
+                        @foreach (var duyuru in Model)
+                        {
+                            <h4>@duyuru.DuyuruAd</h4>
+                            <img src="~/Content/DuyuruResim/@duyuru.DuyuruResim" width="100%" />
+                            <h6>@Html.Raw(duyuru.Duyuruicerik)</h6>
+                        }
+                    </center>
+                </marquee>
+            </ul>
+        </div>
+    </div>
+</div>

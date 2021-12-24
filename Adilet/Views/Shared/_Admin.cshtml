@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="~/Content/assets/assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="~/Content/assets/assets/img/favicon.png">
+    <title>
+        My Blog
+    </title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- Nucleo Icons -->
+    <link href="~/Content/assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link href="~/Content/assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+</head>
+<body class="">
+    <div class="wrapper">
+        <div class="sidebar">
+            <!--
+                Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+            -->
+            <div class="sidebar-wrapper">
+                <div class="logo">
+                    <a href="javascript:void(0)" class="simple-text logo-mini">
+                        <img src="~/Content/BlogResim/refresh.png" />
+                    </a>
+                    <a class="simple-text logo-normal" target="_blank" href="~/Home">Kullanıcı panel</a>
+                </div>
+                <ul class="nav">
+                    <li>
+                        <a href="~/Admin/AdminIndex">
+                            <i class="tim-icons icon-chart-pie-36"></i>
+                            <p>Ana Sayfa</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/Admin/Kategoriler">
+                            <i class="tim-icons icon-bullet-list-67"></i>
+                            <p>Kategoriler</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/Admin/Makaleler">
+                            <i class="tim-icons icon-paper"></i>
+                            <p>Makaleler</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/Admin/Uyeler">
+                            <i class="tim-icons icon-single-02"></i>
+                            <p>Üyeler</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/Admin/Duyurular">
+                            <i class="tim-icons icon-alert-circle-exc"></i>
+                            <p>Duyrular</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/Admin/Hakkimizda">
+                            <i class="tim-icons icon-shape-star"></i>
+                            <p>Hakkımızda</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/Admin/Mesajlar">
+                            <i class="tim-icons icon-email-85"></i>
+                            <p>Mesajlar</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <div class="navbar-toggle d-inline">
+                            <button type="button" class="navbar-toggler">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                        </div>
+                        <a class="navbar-brand" href="~/Admin/AdminIndex">ADMİN PANEL</a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navigation">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="search-bar input-group">
+                                <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal">
+                                    <i class="tim-icons icon-zoom-split"></i>
+                                    <span class="d-lg-none d-md-block">Search</span>
+                                </button>
+                            </li>
+                            <li class="dropdown nav-item">
+                                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                                    <div class="photo">
+                                        <img src="~/Content/assets/img/anime3.png" alt="Profile Photo">
+                                    </div>
+                                    <b class="caret d-none d-lg-block d-xl-block"></b>
+                                    <p class="d-lg-none">
+                                        Log out
+                                    </p>
+                                </a>
+                                <ul class="dropdown-menu dropdown-navbar">
+                                    <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Profile</a></li>
+                                    <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Settings</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Log out</a></li>
+                                </ul>
+                            </li>
+                            <li class="separator d-lg-none"></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <i class="tim-icons icon-simple-remove"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Navbar -->
+            <div class="content">
+                <div class="row">
+                    @RenderBody()
+                </div>
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="copyright">
+                            ©
+                            <script>
+                                document.write(new Date().getFullYear())
+                            </script> made with <i class="tim-icons icon-heart-2"></i> by
+                            <a href="javascript:void(0)" target="_blank">Creative Adilet</a> for a final exams.
+                        </div>
+                    </div>
+                </footer>
+            </div>
+    </div>
+    </div>
+    <script src="~/Content/assets/js/core/jquery.min.js"></script>
+    <script src="~/Content/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!-- Chart JS -->
+    <script src="~/Content/assets/js/plugins/chartjs.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="~/Content/assets/js/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="~/Content/assets/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
+    <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+    <script>
+        window.TrackJS &&
+          TrackJS.install({
+              token: "ee6fab19c5a04ac1a32a645abde4613a",
+              application: "black-dashboard-free"
+          });
+    </script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+    @RenderSection("scripts", false)
+</body>
+</html>

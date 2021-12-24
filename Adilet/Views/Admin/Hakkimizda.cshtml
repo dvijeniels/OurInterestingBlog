@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Adilet.Models.Metin>
+@{
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<h1 class="my-4"></h1>
+<h2>Hakkımızda</h2><hr />
+@foreach (var met in Model)
+{<div class="row">
+     <div class="col-lg-12 text-center">
+         <h5>@Html.Raw(met.MetinIcerik)</h5>
+         <img src="~/Content/BlogResim/@met.Resim" width="650" />
+         <br />
+             <a href="~/Admin/HakkimizdaDuzenle/@met.MetinId" class="btn btn-warning">Düzenle</a>
+     </div>
+    </div>
+}
+
+

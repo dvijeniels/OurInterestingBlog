@@ -1,0 +1,30 @@
+﻿@model Adilet.ViewModel.KategoriModel
+@{
+    ViewBag.Title = "KategoriEkle";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2>Kategori Ekle</h2>
+        @using(Html.BeginForm("KategoriEkle","Admin",FormMethod.Post))
+        {
+            @Html.LabelFor(m => m.KategoriAdi)
+            @Html.TextBoxFor(m => m.KategoriAdi, new { @class="form-control"})
+            @Html.ValidationMessageFor(m => m.KategoriAdi, null, new { @class="text-danger"})
+            <br />
+            <input type="submit" value="Kaydet" class="btn btn-success" />
+            <br />
+            if (ViewBag.hata != null)
+            {
+                
+                <div class="alert alert-danger">@ViewBag.hata</div>
+            }
+            if (ViewBag.sonuc != null)
+            {
+                <div class="alert alert-success">@ViewBag.sonuc</div>
+            }
+            
+        }
+    </div>
+</div>

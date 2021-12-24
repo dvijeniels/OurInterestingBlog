@@ -1,0 +1,42 @@
+﻿@model Adilet.ViewModel.DuyuruModel
+@{
+    ViewBag.Title = "DuyuruEkle";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h2>Duyuru Ekle</h2><hr />
+        @using (Html.BeginForm("DuyuruEkle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.LabelFor(m => m.DuyuruAd)
+            @Html.TextBoxFor(m => m.DuyuruAd, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.DuyuruAd, null, new { @class = "text-danger" })
+            <br />
+            @Html.LabelFor(m => m.Duyuruicerik)
+            @Html.TextAreaFor(m => m.Duyuruicerik, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Duyuruicerik, null, new { @class = "text-danger" })
+            <br />
+
+            @Html.LabelFor(m => m.DuyuruResim)
+            @Html.TextBoxFor(m => m.DuyuruResim, new { type = "file", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.DuyuruResim, null, new { @class = "text-danger" })
+            <br />
+            <input type="submit" value="Kaydet" class="btn btn-success" />
+            <br />    <br />
+            if (ViewBag.hata != null)
+            {
+                <div class="alert alert-danger">@ViewBag.hata</div>
+            }
+            if (ViewBag.sonuc != null)
+            {
+                <div class="alert alert-success">@ViewBag.sonuc</div>
+            }
+        }
+    </div>
+</div>
+@section scripts{
+    <script>
+        CKEDITOR.replace("Duyuruicerik");
+    </script>
+}
+

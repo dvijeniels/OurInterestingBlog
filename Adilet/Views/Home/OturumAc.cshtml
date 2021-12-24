@@ -1,0 +1,24 @@
+﻿@model Adilet.ViewModel.UyeModel
+<h1 class="my-4">Oturum Aç</h1>
+<div class="row">
+    <div class="col-md-6">
+        @using (Html.BeginForm("OturumAc", "Home", new { returnUrl = ViewBag.returnUrl },FormMethod.Post))
+        {
+            @Html.LabelFor(m=>m.KullaniciAdi)
+            @Html.TextBoxFor(m => m.KullaniciAdi, new { @class="form-control"})
+            @Html.ValidationMessageFor(m => m.KullaniciAdi, null, new { @class="text-danger"})
+            <br/>
+            @Html.LabelFor(m => m.Sifre)
+            @Html.PasswordFor(m => m.Sifre, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Sifre, null, new { @class = "text-danger" })
+            <br />
+            <input type="submit" value="Giriş" class="btn btn-success" />
+            @Html.ActionLink("Üye Ol", "UyeOl", null, new { @class="btn btn-primary"})
+        }
+        <br />  
+        @if(ViewBag.hata!=null)
+        {
+            <div class="alert alert-danger">@ViewBag.hata</div>
+        }
+    </div>
+</div>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Adilet.Models.Duyrular>
+@{
+    ViewBag.Title = "Duyurular";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2>Kategoriler</h2><hr />
+        @if (ViewBag.hata != null)
+        {
+            <div class="alert alert-danger">@ViewBag.hata</div>
+        }
+        @if (ViewBag.sonuc != null)
+        {
+            <div class="alert alert-success">@ViewBag.sonuc</div>
+        }
+        <br />
+        @Html.ActionLink("Duyru Ekle", "DuyuruEkle", null, new { @class = "btn btn-info" })
+        <br /><br />
+        <table class="table">
+            <tr>
+                <td><b>ID</b></td>
+                <td><b>DUYRU BAŞLIK</b></td>
+                <td><b>DUYRU İÇERİK</b></td>
+                <td><b>DUYRU RESİM</b></td>
+                <td><b>DÜZENLE</b></td>
+                <td><b>SİL</b></td>
+            </tr>
+            @foreach (var duyuru in Model)
+            {
+                <tr>
+                    <td>@duyuru.DuyuruId</td>
+                    <td>@duyuru.DuyuruAd</td>
+                    <td>@duyuru.Duyuruicerik</td>
+                    <td><img src="~/Content/DuyuruResim/@duyuru.DuyuruResim" class="img-thumbnail" style="width:150px" /></td>
+                    <td><a href="~/Admin/DuyuruDuzenle/@duyuru.DuyuruId" class="btn btn-warning">Düzenle</a></td>
+                    <td><a href="~/Admin/DuyuruSil/@duyuru.DuyuruId" class="btn btn-warning" onclick="return confirm('Silmek istediğinize emin misiniz?')">Sil</a></td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

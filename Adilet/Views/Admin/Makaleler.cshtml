@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Adilet.Models.Makale>
+@{
+    ViewBag.Title = "Makaleler";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2>Makaleler</h2><hr />
+        @if (ViewBag.hata != null)
+        {
+            <div class="alert alert-danger">@ViewBag.hata</div>
+        }
+        @if (ViewBag.sonuc != null)
+        {
+            <div class="alert alert-success">@ViewBag.sonuc</div>
+        }
+        <br />
+        @Html.ActionLink("Makale Ekle", "MakaleEkle", null, new { @class = "btn btn-info" })
+        <br /><br />
+        <table class="table">
+            <tr>
+                <td><b>ID</b></td>
+                <td><b>BAŞLIK</b></td>
+                <td><b>KATEGORİ</b></td>
+                <td><b>RESİM</b></td>
+                <td><b>YAZAN</b></td>
+                <td><b>DÜZENLE</b></td>
+                <td><b>SİL</b></td>
+            </tr>
+            @foreach (var makale in Model)
+            {
+                <tr>
+                    <td>@makale.MakaleId</td>
+                    <td>@makale.Baslik</td>
+                    <td>@makale.Kategori.KategoriAdi</td>
+                    <td><img src="~/Content/BlogResim/@makale.Foto" class="img-thumbnail" style="width:150px" /></td>
+                    <td>@makale.Uye.KullaniciAdi</td>
+                    <td><a href="~/Admin/MakaleDuzenle/@makale.MakaleId" class="btn btn-warning">Düzenle</a></td>
+                    <td><a href="~/Admin/MakaleSil/@makale.MakaleId " class="btn btn-warning" onclick="return confirm('Silmek istediğinize emin misiniz?')">Sil</a></td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+

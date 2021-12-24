@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Adilet.Models.Yorum>
+    @foreach (var yorum in Model)
+    {
+    <div class="media mb-4">
+        <img src="~/Content/UyeFoto/@yorum.Uye.Foto" style="width:30px;height:30px;" class="d-flex mr-3 rounded-circle" alt="@yorum.Uye.KullaniciAdi" />
+        @*<img class="d-flex mr-3 rounded-circle" src="@yorum.Uye.Foto" alt="@yorum.Uye.KullaniciAdi">*@
+        <div class="media-body">
+            <h5 class="mt-0">@yorum.Uye.KullaniciAdi</h5>
+            @yorum.Icerik
+            @if (Session["uyeId"] != null && yorum.UyeId == Convert.ToInt32(Session["uyeId"].ToString()))
+            {
+               <br /><button class="btn btn-danger btnYorumSil" type="submit" onclick="if (!confirm('Emin Misiniz?')) { return false }" data-id="@yorum.YorumId"> Sil</button>
+            }
+        </div>
+    </div>
+
+    }

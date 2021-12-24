@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Adilet.Models.Kategori>
+@{
+    ViewBag.Title = "Kategoriler";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2>Kategoriler</h2><hr />
+        @if (ViewBag.hata != null)
+        {
+        <div class="alert alert-danger">@ViewBag.hata</div>
+        }
+        @if (ViewBag.sonuc != null)
+        {
+        <div class="alert alert-success">@ViewBag.sonuc</div>
+        }
+        <br />
+        @Html.ActionLink("Kategori Ekle", "KategoriEkle", null, new { @class="btn btn-info"})
+        <table class="table"> 
+            <tr>
+                <td><b>ID</b></td>
+                <td><b>KATEGORI ADI</b></td>
+                <td><b>DÜZENLE</b></td>
+                <td><b>SİL</b></td>
+            </tr>   
+            @foreach (var kat in Model)
+            {
+                <tr>
+                    <td>@kat.KategoriId</td>
+                    <td>@kat.KategoriAdi</td>
+                    <td><a href="~/Admin/KategoriDuzenle/@kat.KategoriId" class="btn btn-warning">Düzenle</a></td>
+                    <td><a href="~/Admin/KategoriSil/@kat.KategoriId" class="btn btn-warning" onclick="return confirm('Silmek istediğinize emin misiniz?')">Sil</a></td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+

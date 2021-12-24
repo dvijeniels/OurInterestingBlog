@@ -1,0 +1,28 @@
+﻿@model Adilet.Models.Uye
+
+<h1 class="my-4">Üye Detay</h1>
+<div class="row">
+    <div class="col-md-8">
+        <div class="card  mb-4">
+            <h3>Üye Bilgileri</h3>
+            <b>Kullanıcı Adı</b>@Model.KullaniciAdi<br/>
+            <b>Makalle Sayısı</b>@Model.Makale.Count<br />
+            <b>Yorum Sayısı</b>@Model.Yorum.Count<br />
+            <br/>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <img class="img-thumbnail" src="~/Content/UyeFoto/@Model.Foto" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h5>Yazara Ait Makaleler:</h5>
+        @foreach (var makale in Model.Makale)
+        {
+            <a href="~/Home/MakaleDetay/@makale.MakaleId">@makale.Baslik
+            (@makale.Kategori.KategoriAdi)</a><br/>
+        }
+    </div>
+</div>
+

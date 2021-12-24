@@ -1,0 +1,47 @@
+﻿@model Adilet.ViewModel.MakaleModel
+@{
+    ViewBag.Title = "MakaleDuzenle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h2>Makale Düzenle</h2><hr />
+        @using (Html.BeginForm("MakaleDuzenle", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.HiddenFor(m => m.MakaleId);
+            @Html.LabelFor(m => m.Baslik)
+            @Html.TextBoxFor(m => m.Baslik, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Baslik, null, new { @class = "text-danger" })
+            <br />
+            @Html.LabelFor(m => m.Icerik)
+            @Html.TextAreaFor(m => m.Icerik, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Icerik, null, new { @class = "text-danger" })
+            <br />
+            @Html.LabelFor(m => m.KategoriId)
+            @Html.DropDownListFor(m => m.KategoriId, Model.KategoriListe, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.KategoriId, null, new { @class = "text-danger" })
+            <br />
+            @Html.LabelFor(m => m.Foto)
+            @Html.TextBoxFor(m => m.Foto, new { type = "file", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Foto, null, new { @class = "text-danger" })
+            <br />
+            <input type="submit" value="Kaydet" class="btn btn-success" />
+            <br />    <br />
+            if (ViewBag.hata != null)
+            {
+                <div class="alert alert-danger">@ViewBag.hata</div>
+            }
+            if (ViewBag.sonuc != null)
+            {
+                <div class="alert alert-success">@ViewBag.sonuc</div>
+            }
+        }
+    </div>
+</div>
+@section scripts{
+    <script>
+        CKEDITOR.replace("Icerik");
+    </script>
+}
+
+

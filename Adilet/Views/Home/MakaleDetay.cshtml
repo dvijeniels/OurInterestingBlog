@@ -1,0 +1,122 @@
+﻿@model Adilet.Models.Makale
+<h1 class="my-4"></h1>
+
+    <!-- Blog Post -->
+    <div class="card mb-4">
+        <img class="card-img-top" src="~/Content/BlogResim/@Model.Foto" alt="@Model.Baslik">
+        <div class="card-body">
+            <h2 class="card-title">@Model.Baslik</h2>
+                <p>@Html.Raw(Model.Icerik)</p>
+            <hr />
+            <small>
+                Bu makale @Model.Okunma kez okundu.
+            </small>
+            @if (Session["uyeOturum"]!=null)
+            {
+                if (Session["uyeId"].ToString()==Model.UyeId.ToString())
+                {
+                    <br />
+    <a href="~/Home/MakaleDuzenle/@Model.MakaleId" class="btn btn-warning" onclick="return confirm('Düzenlemek istediğinize emin misiniz?')">Düzenle</a>
+                    <a href="~/Home/MakaleSil/@Model.MakaleId" class="btn btn-danger" onclick="return confirm('Silmek istediğinize emin misiniz?')">Sil</a>
+                }
+            }
+        </div>
+        <div class="card-footer text-muted">
+            <b>Kategori : </b>@Model.Kategori.KategoriAdi |
+            <b>Yazar : </b><a href="~/Home/UyeDetay/@Model.UyeId"> @Model.Uye.KullaniciAdi </a> |
+            <b>Tarih : </b>@Model.Tarih |
+            @Model.Yorum.Count Yorum
+        </div>
+    </div>
+
+<!-- Comments Form -->
+@if (Session["uyeOturum"]==null)
+{
+    <div class="alert alert-info">Yorum yapabilmek için önce @Html.ActionLink("giriş yapınız", "OturumAc", "Home", new { returnURL=Request.RawUrl},null)></div>
+}
+else
+{
+    <div class="card my-4" >
+        <h5 class="card-header" style="text-align:center">Yorum Yazınız</h5>
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                    <textarea class="form-control" id="txtYorum" rows="3"></textarea>
+                </div>
+                <button type="button" class="btn btn-primary" id="btnGonder" style="margin-left:270px;width:150px">Kaydet</button>
+            </form>
+            <div id="yorumSonuc"></div>
+        </div>
+    </div>
+}
+<!--Single Commnet-->
+<div id="yorumlar">
+    @Html.Action("Yorumlar", "Home", new { makaleId=@Model.MakaleId})
+</div>
+@section scripts{
+    <script>
+        $("#btnGonder").click(function () {
+            var yorum = $("#txtYorum").val();
+            if(yorum=="")
+            {
+                $("#yorumSonuc").html("Yorum Giriniz!");
+                $("#yorumSonuc").removeClass();
+                $("#yorumSonuc").addClass("alert alert-danger");
+            }
+            else 
+            {
+                $.ajax({
+                    url: "/Home/YorumYap",
+                    type:"POST",
+                    data:{yorum:yorum,MakaleId:@Model.MakaleId},
+                    dataType:"json",
+                    success:function(data){
+                        $("#yorumSonuc").html("Yorum Eklendi!");
+                        $("#yorumSonuc").removeClass();
+                        $("#yorumSonuc").addClass("alert alert-success");
+                        $.yorumGetir();
+                    }
+                });
+            }
+        });
+        $(document).on("click",".btnYorumSil",function(){
+            var yorumId=$(this).attr("data-id");
+            $.yorumSil(yorumId);
+        });
+        $.yorumSil=function(yId){
+            $.ajax({
+                url: "/Home/YorumSil",
+                type:"POST",
+                data:{yorumId:yId},
+                dataType:"json",
+                success:function(data){
+                    if (data) {
+    
+                    
+                        $("#yorumSonuc").html("Yorum Silindi!");
+                        $("#yorumSonuc").removeClass();
+                        $("#yorumSonuc").addClass("alert alert-success");
+                        $.yorumGetir();
+                    }
+                    else 
+                    {
+                        $("#yorumSonuc").html("Hata oluştu!");
+                        $("#yorumSonuc").removeClass();
+                        $("#yorumSonuc").addClass("alert alert-danger");
+                    }
+                }
+            });
+        }
+        $.yorumGetir=function(){
+            $.ajax({
+                url: "/Home/Yorumlar",
+                data:{MakaleId:@Model.MakaleId},
+                dataType:"html",
+                success:function(data){
+                    $("#yorumlar").html(data);
+                   
+                }
+            });
+        }
+    </script>
+}

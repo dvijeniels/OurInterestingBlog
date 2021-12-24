@@ -1,0 +1,60 @@
+﻿@model Adilet.ViewModel.MesajModel
+@{
+    ViewBag.Title = "Mesaj";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <hr /><h2>İletişim Sayfası</h2><hr />
+        @using (Html.BeginForm("Mesaj", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.LabelFor(m => m.MesajGonderen)
+            @Html.TextBoxFor(m => m.MesajGonderen, new { @class = "form-control", placeholder="Adınız ve Soyadınız" })
+            @Html.ValidationMessageFor(m => m.MesajGonderen, null, new { @class = "text-danger" })
+            <br />
+            @Html.LabelFor(m => m.MesajMail)
+            @Html.TextBoxFor(m => m.MesajMail, new { @class = "form-control", placeholder = "Email giriniz" })
+            @Html.ValidationMessageFor(m => m.MesajMail, null, new { @class = "text-danger" })
+            <br />
+            @Html.LabelFor(m => m.MesajBaslik)
+            @Html.TextBoxFor(m => m.MesajBaslik, new { @class = "form-control", placeholder = "Konu adı" })
+            @Html.ValidationMessageFor(m => m.MesajBaslik, null, new { @class = "text-danger" })
+            <br />
+            @Html.LabelFor(m => m.Mesajicerik)
+            @Html.TextAreaFor(m => m.Mesajicerik, new { @class = "form-control", placeholder = "Mesajınızı buraya yazınız!" })
+            @Html.ValidationMessageFor(m => m.Mesajicerik, null, new { @class = "text-danger" })
+            <br />
+            <div class="text-center">
+                <input type="submit" value="Gönder" class="btn btn-success" />
+            </div>
+            <br />    <br />
+            if (ViewBag.hata != null)
+            {
+                <div class="alert alert-danger">@ViewBag.hata</div>
+            }
+            if (ViewBag.sonuc != null)
+            {
+                <script type="text/javascript">
+                    window.onload = function () {
+                        alert("@ViewBag.sonuc");
+                    };
+                </script>
+            }
+
+        }
+    </div>
+</div>
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<ul class="socialIcons text-center">
+    <h3>LÜTFEN BİZİ TAKİP EDİNİZ<br />  "FOLLOW "<br /> "ПОДПИШИТЕСЬ"</h3>
+    <li><a class="facebook" href="https://www.facebook.com/adilet.djalilov" target="_blank"><i class="fa fa-facebook"></i></a></li>
+    <li><a class="whatsapp" href="https://wa.me/996555219558" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
+    <li><a class="instagram" href="https://www.instagram.com/_adilet29_/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+    <li><a class="youtube" href="https://www.youtube.com/channel/UCn3_-JD9-SkOOyf_MkUN5lQ?view_as=subscriber" target="_blank"><i class="fa fa-youtube"></i></a></li>
+</ul>
+<link href="~/Content/Sosyal2.css" rel="stylesheet" />
+

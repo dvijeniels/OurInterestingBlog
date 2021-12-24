@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Adilet.Models.Mesajlar>
+@{
+    ViewBag.Title = "Mesajlar";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h2>Mesajlar</h2><hr />
+        @if (ViewBag.sonuc != null)
+        {
+            <div class="alert alert-success">@ViewBag.sonuc</div>
+        }
+        <table class="table">
+            <tr>
+                <td><b>ID</b></td>
+                <td><b>ADI VE SOYADI</b></td>
+                <td><b>EMAİL</b></td>
+                <td><b>MESAJ KONUSU</b></td>
+                <td><b>MESAJ İÇERİK</b></td>
+                <td><b>SİL</b></td>
+            </tr>
+            @foreach (var mesaj in Model)
+            {
+                <tr>
+                    <td>@mesaj.MesajId</td>
+                    <td>@mesaj.MesajGonderen</td>
+                    <td>@mesaj.MesajMail</td>
+                    <td>@mesaj.MesajBaslik</td>
+                    <td>@mesaj.Mesajicerik</td>
+                    <td><a href="~/Admin/MesajSil/@mesaj.MesajId" class="btn btn-warning" onclick="return confirm('Silmek istediğinize emin misiniz?')">Sil</a></td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+

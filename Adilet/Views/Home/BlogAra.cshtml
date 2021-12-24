@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Adilet.Models.Makale>
+<h1 class="my-4"></h1>
+<h4><b>Aranan Değer: </b> @ViewBag.deger</h4>
+    <h6>@ViewBag.kayityok</h6>
+@foreach (var makale in Model)
+{
+    <!-- Blog Post -->
+    <div class="card mb-4">
+        <img class="card-img-top" src="~/Content/BlogResim/@makale.Foto" alt="@makale.Baslik">
+        <div class="card-body">
+            <h3 class="card-title">@makale.Baslik</h3>
+            @if (makale.Icerik.Length > 200)
+            {
+                <h6>@Html.Raw(makale.Icerik.Substring(0, 200))...</h6>
+            }
+            else
+            {
+                <h6>@Html.Raw(makale.Icerik)</h6>
+            }
+            <a href="~/Home/MakaleDetay/@makale.MakaleId" class="btn btn-primary">Devamını oku &rarr;</a>
+        </div>
+        <div class="card-footer text-muted">
+            <b>Kategori : </b>@makale.Kategori.KategoriAdi |
+            <b>Yazar : </b><a href="~/Home/UyeDetay/@makale.UyeId"> @makale.Uye.KullaniciAdi </a> |
+            <b>Tarih : </b>@makale.Tarih |
+            @makale.Yorum.Count Yorum
+        </div>
+    </div>
+}
+
+
